@@ -1,11 +1,14 @@
 package com.wane.catnip.service.moment;
 
+import com.wane.catnip.exception.MomentNotFoundException;
 import com.wane.catnip.model.Image;
+import com.wane.catnip.model.Moment;
 import com.wane.catnip.model.MomentPreview;
 import com.wane.catnip.model.MomentPreviews;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 @Service
@@ -16,6 +19,15 @@ public class DefaultMomentService implements MomentService {
                 previewKitty(),
                 previewMax()
         ));
+    }
+
+    @Override
+    public Moment retrieveMoment(String id) {
+        if (id.equals("cat1")) {
+            return momentKitty();
+        }
+
+        throw new MomentNotFoundException(format("Moment not found. Parameter: %s", id));
     }
 
     private MomentPreview previewKitty() {
@@ -43,5 +55,20 @@ public class DefaultMomentService implements MomentService {
                 new Image("/image/thumb2.jpg")
         ));
         return preview;
+    }
+
+    private Moment momentKitty() {
+        Moment moment = new Moment();
+        moment.setCat("Kitty");
+        moment.setMessage("I'm thinking, not sleeping.");
+        moment.setBanner(new Image("/image/banner3.jpg"));
+        moment.setAvatar(new Image("/image/avatar1.jpg"));
+        moment.setAge(6);
+        moment.setKind("American Shorthair");
+        moment.setStars(389);
+        moment.setFollows(389);
+        moment.setFishes(99);
+        moment.setAdopted(38);
+        return moment;
     }
 }

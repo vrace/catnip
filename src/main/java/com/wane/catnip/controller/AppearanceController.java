@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Api("appearance")
 @RestController
-@RequestMapping("/appearance")
+@RequestMapping(value = "/appearance", produces = APPLICATION_JSON_VALUE)
 public class AppearanceController {
     @Autowired
     private AppearanceService appearanceService;

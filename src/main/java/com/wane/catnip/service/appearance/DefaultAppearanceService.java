@@ -13,7 +13,8 @@ public class DefaultAppearanceService implements AppearanceService {
     public Appearance retrieveAppearance() {
         List<Image> banners = Arrays.asList(
                 new Image("/image/banner1.jpg"),
-                new Image("/image/banner2.jpg")
+                new Image("/image/banner2.jpg"),
+                new Image("/image/banner3.jpg")
         );
 
         return new Appearance(banners);
