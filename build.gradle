@@ -26,5 +26,6 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+	compile('com.mangofactory:swagger-springmvc:1.0.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
